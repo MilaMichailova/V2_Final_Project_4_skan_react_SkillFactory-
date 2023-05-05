@@ -1,13 +1,22 @@
 import { useStore } from "../Store";
 import { observer } from "mobx-react-lite";
+import Header from "./Header";
+import SearchNewsByCompanyCta from "./SearchNewsByCompanyCta";
+import AboutUs from "./AboutUs";
+import Rates from "./Rates";
+import Footer from "./Footer";
 
 const Home = () => {
-  const { userStore } = useStore();
+  // const { userStore } = useStore();
 
   return (
     <div>
-      <h1>Главная страница</h1>
-      <div>Пользователь: {userStore.currentUser.userName}</div>
+      <Header></Header>
+      <SearchNewsByCompanyCta></SearchNewsByCompanyCta>
+      <AboutUs></AboutUs>
+      <Rates></Rates>
+      <Footer></Footer>
+      {/* <div>Пользователь: {userStore.currentUser.userName}</div> */}
     </div>
   );
 };

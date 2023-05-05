@@ -1,28 +1,56 @@
+// import { makeAutoObservable } from "mobx";
+// import { User } from "./User";
+
+// let userInfo = {} as User;
+
+// class UserStore {
+//   get isUserLoggedIn() {
+//     console.log("userInfo", Object.keys(userInfo) );
+//     return !!Object.keys(userInfo).length;
+//   }
+
+//   get currentUser() {
+//     return userInfo;
+//   }
+
+//   setUserInfo(newUserInfo: User) {
+//     localStorage.setItem("user", JSON.stringify(userInfo));
+//     userInfo = newUserInfo;
+//   }
+
+//   constructor() {
+//     makeAutoObservable(this);
+//     const storageUser = localStorage.getItem("user");
+//     userInfo = JSON.parse(storageUser ?? "{}");
+//   }
+// }
+
+// export default UserStore;
+
 import { makeAutoObservable } from "mobx";
-import { User } from "./User";
+import { UserToken } from "./UserToken";
+
+let userToken = {} as UserToken;
 
 class UserStore {
-  private userInfo = {} as User;
-
   get isUserLoggedIn() {
-    return !!this.userInfo;
+    console.log("userToken", Object.keys(userToken));
+    return !!Object.keys(userToken).length;
   }
 
   get currentUser() {
-    return this.userInfo;
+    return userToken;
   }
 
-  setUserInfo(userInfo: User) {
-    localStorage.setItem("user", JSON.stringify(userInfo));
-    this.userInfo = userInfo;
+  setUserToken(newUserToken: UserToken) {
+    localStorage.setItem("user", JSON.stringify(userToken));
+    userToken = newUserToken;
   }
 
   constructor() {
     makeAutoObservable(this);
     const storageUser = localStorage.getItem("user");
-    this.userInfo = JSON.parse(storageUser ?? "{}");
-
-    console.log("ctor");
+    userToken = JSON.parse(storageUser ?? "{}");
   }
 }
 

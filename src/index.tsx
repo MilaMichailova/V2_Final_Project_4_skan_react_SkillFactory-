@@ -5,6 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import stores, { StoreContext } from "./Store";
+import "../src/asets/fonts/Ferry/ferry_black.otf";
+import "../src/asets/fonts/Ferry/ferry_black.woff";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
