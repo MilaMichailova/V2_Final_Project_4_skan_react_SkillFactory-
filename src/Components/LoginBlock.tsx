@@ -6,21 +6,23 @@ const LoginBlock = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <div className="authorizationButtonBlock">
-        <button className=" primaryButton lightButton ">
-          Зарегистрироваться
-        </button>
-        <div>
-          <img src={verticalLine} alt="vertical line"></img>
-        </div>
-        <button
-          onClick={() => navigate("/login")}
-          className="primaryButton loginButton"
-        >
-          Войти
-        </button>
+    <div className="authorizationButtonBlock">
+      <button className=" primaryButton lightButton ">
+        Зарегистрироваться
+      </button>
+      <div>
+        <img
+          className=" verticalLine"
+          src={verticalLine}
+          alt="vertical line"
+        ></img>
       </div>
+      <button
+        onClick={() => navigate("/login")}
+        className="primaryButton loginButton"
+      >
+        Войти
+      </button>
     </div>
   );
 };

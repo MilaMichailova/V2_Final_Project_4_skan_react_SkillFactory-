@@ -1,14 +1,14 @@
 import { observer } from "mobx-react-lite";
 import Navigation from "./Navigation";
 import LoginBlock from "./LoginBlock";
-import UserInfo from "./UserInfo";
+import UserInformation from "./UserInformation";
 import { useStore } from "../Store";
 
 const AuthenticationInfo = observer(() => {
   const { userStore } = useStore();
 
   if (userStore.isUserLoggedIn) {
-    return <UserInfo></UserInfo>;
+    return <UserInformation></UserInformation>;
   } else {
     return <LoginBlock></LoginBlock>;
   }
@@ -16,12 +16,10 @@ const AuthenticationInfo = observer(() => {
 
 const Header = () => {
   return (
-    <div>
-      <header className="headerWrapper">
-        <Navigation></Navigation>
-        <AuthenticationInfo />
-      </header>
-    </div>
+    <header className="headerWrapper">
+      <Navigation></Navigation>
+      <AuthenticationInfo />
+    </header>
   );
 };
 

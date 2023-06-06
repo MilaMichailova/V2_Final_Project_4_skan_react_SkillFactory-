@@ -6,12 +6,16 @@ import AboutUs from "./AboutUs";
 import Rates from "./Rates";
 import Footer from "./Footer";
 
+import MobileMenu from "./MobileMenu";
+
 const Home = () => {
   // const { userStore } = useStore();
 
   return (
     <div>
       <Header></Header>
+
+      <MobileMenu></MobileMenu>
       <SearchNewsByCompanyCta></SearchNewsByCompanyCta>
       <AboutUs></AboutUs>
       <Rates></Rates>

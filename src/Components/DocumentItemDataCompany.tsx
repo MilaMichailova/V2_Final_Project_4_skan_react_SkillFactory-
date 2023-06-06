@@ -1,37 +1,55 @@
 import { observer } from "mobx-react-lite";
 import ImageNewsMock from "../asets/images/newsImagemock.svg";
+import moment from "moment";
 
-const DocumentItemDataCompany = () => {
-  // const { userStore } = useStore();
+const DocumentItemDataCompany = (document: any) => {
+  const renderBadge = () => {
+    const attributes = document.attributes;
+    if (attributes.isTechNews) {
+      return "Технические новости";
+    }
+    if (attributes.isAnnouncement) {
+      return "Анаонсы и события";
+    }
+    if (attributes.isDigest) {
+      return "Сводки новостей";
+    }
+    return "Новости";
+  };
+
+  const createMarkup = () => {
+    return { __html: document.content.markup };
+  };
 
   return (
-    <div>
-      <div className="newsWrapper">
-        <div className="headerNews">
-          <div className="dateNews">11.11.1234</div>
-          <div className="sourceNews">Lorem ipsum dolor</div>
+    <div className="newsWrapper">
+      <div className="headerNews">
+        <div className="dateNews">
+          {moment(document.issueDate).format("DD.MM.YYYY")}
         </div>
-        <div className="titleNews">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus
-          vitae ad qui.
+        <div className="sourceNews">
+          <a href={document.url} target="_blank" rel="noreferrer">
+            {document.source.name}
+          </a>
         </div>
-        <div className="badgeNews">Lorem ipsum dolor</div>
-        <div className="imageNews">
-          <img src={ImageNewsMock} alt="news" />
-        </div>
-        <div className="digestNews">
-          SkillFactory — школа для всех, кто хочет изменить свою карьеру и
-          жизнь. С 2016 года обучение прошли 20 000+ человек из 40 стран с 4
-          континентов, самому взрослому студенту сейчас 86 лет. Выпускники
-          работают в Сбере, Cisco, Bayer, Nvidia, МТС, Ростелекоме, Mail.ru,
-          Яндексе, Ozon и других топовых компаниях. <div></div> Принципы
-          SkillFactory: акцент на практике, забота о студентах и ориентир на
-          трудоустройство. 80% обучения — выполнение упражнений и реальных
-          проектов. Каждого студента поддерживают менторы, 2 саппорт-линии и
-          комьюнити курса. А карьерный центр помогает составить резюме,
-          подготовиться к собеседованиям и познакомиться с IT-рекрутерами.
-        </div>
-        <button className="lightTurquoiseButton">Читать в источнике</button>
+      </div>
+      <div className="titleNews">{document.title.text}</div>
+      <div className="badgeNews">{renderBadge()}</div>
+      <div className="imageNews">
+        <img src={ImageNewsMock} alt="news" className="imageNewsImg" />
+      </div>
+      <div
+        className="digestNews"
+        dangerouslySetInnerHTML={createMarkup()}
+      ></div>
+      <div className="buttonAndInfoBlock">
+        <button
+          className="lightTurquoiseButton"
+          onClick={() => window.open(`${document.url}`, "_blank")}
+        >
+          Читать в источнике
+        </button>
+        <div className="counterWords">{document.attributes.wordCount}</div>
       </div>
     </div>
   );

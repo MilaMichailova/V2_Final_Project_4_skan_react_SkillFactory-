@@ -46,6 +46,19 @@ const AboutUs = () => {
     arrows: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          arrows: true,
+          nextArrow: <SampleNextArrow />,
+          prevArrow: <SamplePrevArrow />,
+        },
+      },
+    ],
   };
 
   return (
@@ -53,16 +66,32 @@ const AboutUs = () => {
       <h1 className="primaryTitle aboutUsTitle">Почему именно мы</h1>
       <Slider {...settings} className="SliderAboutUs">
         <div>
-          <img src={HighSpeedSlide} alt="High Speed Slide" />
+          <img
+            src={HighSpeedSlide}
+            alt="High Speed Slide"
+            className="mobileSlideSliderAboutUs"
+          />
         </div>
         <div>
-          <img src={HugeDatabaseSlide} alt="HugeDatabaseSlide" />
+          <img
+            src={HugeDatabaseSlide}
+            alt="HugeDatabaseSlide"
+            className="mobileSlideSliderAboutUs"
+          />
         </div>
         <div>
-          <img src={ProtectionInfoSlide} alt="ProtectionInfoSlide" />
+          <img
+            src={ProtectionInfoSlide}
+            alt="ProtectionInfoSlide"
+            className="mobileSlideSliderAboutUs"
+          />
         </div>
         <div>
-          <img src={ProtectionInfoSlide} alt="High Speed Slide 2" />
+          <img
+            src={ProtectionInfoSlide}
+            alt="High Speed Slide 2"
+            className="mobileSlideSliderAboutUs"
+          />
         </div>
       </Slider>
       <img className="WhyWeImg" src={WhyWe} alt="WhyWe" />

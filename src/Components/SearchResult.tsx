@@ -3,9 +3,10 @@ import Header from "./Header";
 import Footer from "./Footer";
 import LoadingDataCompany from "./LoadingDataCompany";
 import ReceivedDataCompany from "./ReceivedDataCompany";
+import { useStore } from "../Store";
 
 const SearchResult = () => {
-  // const { userStore } = useStore();
+  const { searchStore } = useStore();
 
   return (
     <div>

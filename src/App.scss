@@ -16,6 +16,21 @@ $default-gray-color: #949494;
   font-weight: 900;
 }
 
+.error {
+  color: red;
+}
+
+.loader {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
 // .font-Ferry-script {
 //   font-family: "Ferry";
 // }
@@ -95,7 +110,7 @@ html {
   font-size: 14px;
   line-height: 17px;
   letter-spacing: 0.01em;
-  cursor: pointer;
+  // cursor: pointer;
 }
 
 .lightButton {
@@ -126,7 +141,6 @@ html {
   background: rgba(217, 217, 217, 0.4);
   border-radius: 5px;
   margin-right: 128px;
-  display: none;
 }
 
 .userCompanyData {
@@ -176,46 +190,89 @@ html {
   color: #8ac540;
 }
 
+.userCompanyDataLoading {
+  display: none;
+}
+
 // .userCompanyDataLoading {
-//   // display: none;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   width: 175px;
+//   height: 63px;
+//   justify-content: center;
+//   background: rgba(217, 217, 217, 0.4);
+//   border-radius: 5px;
+//   margin-right: 128px;
 // }
 
-.userCompanyDataLoading {
+// .userCompanyDataLoader {
+//   width: 24px;
+//   height: 24px;
+//   animation: 1s linear 0s normal none infinite running userCompanyDataLoader;
+//   -webkit-animation: 1.5s linear 0s normal none infinite running
+//     userCompanyDataLoader;
+//   width: 100px;
+// }
+// @keyframes userCompanyDataLoader {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(360deg);
+//   }
+// }
+// @-webkit-keyframes userCompanyDataLoader {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(360deg);
+//   }
+// }
+
+.userAccountWrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 175px;
-  height: 63px;
-  justify-content: center;
-  background: rgba(217, 217, 217, 0.4);
-  border-radius: 5px;
-  margin-right: 128px;
+  flex-direction: row;
+  padding-top: 16px;
 }
 
-.userCompanyDataLoader {
-  width: 24px;
-  height: 24px;
-  animation: 1s linear 0s normal none infinite running userCompanyDataLoader;
-  -webkit-animation: 1.5s linear 0s normal none infinite running
-    userCompanyDataLoader;
-  width: 100px;
+.userAccountTextWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 4px;
 }
-@keyframes userCompanyDataLoader {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+
+.userName {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: $default-black-color;
+  opacity: 0.7;
 }
-@-webkit-keyframes userCompanyDataLoader {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+
+.userAccountLogout {
+  // cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: $default-black-color;
+  opacity: 0.4;
 }
+
+.userAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 25px;
+}
+
 .mainWrapper {
   display: flex;
   flex-direction: row;
@@ -385,7 +442,7 @@ html {
   background: transparent;
   border: 1px solid rgba(89, 112, 255, 0.51);
   border-radius: 3px;
-  cursor: pointer;
+  // cursor: pointer;
 }
 
 primaryButton:disabled {
@@ -432,7 +489,6 @@ secondsryButton:disabled {
   line-height: 15px;
   letter-spacing: 0.02em;
 }
-// all styles not useble now
 
 .secondaryTitle {
   font-weight: 900;
@@ -599,7 +655,9 @@ PrevArrow {
 }
 
 .activeTarifeBage {
-  margin-left: 236px;
+  margin-left: 218px;
+  width: 134px;
+  text-align: center;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -727,7 +785,7 @@ PrevArrow {
 }
 
 .forminputSearc {
-  cursor: pointer;
+  // cursor: pointer;
   width: 242px;
   text-align: center;
   color: #949494;
@@ -959,11 +1017,11 @@ PrevArrow {
 
 .DocumentItemsWrapper {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   padding-top: 59px;
-  margin-left: 60px;
 }
 
 .newsWrapper {
@@ -977,6 +1035,9 @@ PrevArrow {
   margin-right: 38px;
   margin-bottom: 38px;
   padding: 19px 30px 35px 30px;
+  width: 641px;
+  height: 694px;
+  box-sizing: border-box;
 }
 
 .headerNews {
@@ -1035,6 +1096,16 @@ PrevArrow {
   color: #000000;
   opacity: 0.5;
   margin-bottom: 32px;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.buttonAndInfoBlock {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .lightTurquoiseButton {
@@ -1052,6 +1123,16 @@ PrevArrow {
   color: #000000;
 }
 
+.counterWords {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.02em;
+  color: #949494;
+}
+
 .buttonShowMore {
   margin-left: 591px;
   margin-bottom: 109px;
@@ -1067,4 +1148,840 @@ PrevArrow {
   letter-spacing: 0.04em;
   border: none;
   color: #ffffff;
+}
+
+.mobile {
+  display: none !important;
+}
+
+@media (max-width: 375px) {
+  html {
+    width: 375px;
+  }
+  .mobile {
+    display: flex !important;
+  }
+
+  .desktop {
+    display: none !important;
+  }
+
+  .headerWrapper {
+    padding: 0 26px 0 14px;
+  }
+
+  .NavigationWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menuWrapper {
+    display: none;
+  }
+
+  .menuList {
+    display: none;
+  }
+
+  .menuItem {
+    display: none;
+  }
+
+  .menuItemHref {
+    display: none;
+  }
+
+  .authorizationButtonBlock {
+    .primaryButton {
+      display: none;
+    }
+
+    .lightButton {
+      display: none;
+    }
+
+    .verticalLine {
+      display: none;
+    }
+
+    .loginButton {
+      display: none;
+    }
+
+    width: 30px;
+    height: 25px;
+    justify-content: flex-end;
+    align-items: center;
+    background-image: url(../src/asets/images/mobile-menu-ikon.svg);
+  }
+
+  .menuMobileWrapper {
+    background-color: $default-turquoise-color;
+    width: 100%;
+    height: 69vh;
+    padding: 36px 0 76px 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .ElementmenuMobile {
+    padding-bottom: 26px;
+    .menuItemHrefMobile {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: 0.01em;
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .menuItemHrefMobileLogin {
+      opacity: 0.4;
+      padding-top: 50px;
+      padding-bottom: 20px;
+    }
+  }
+
+  .loginButtonMobile {
+    width: 295px;
+    height: 51.96px;
+    background: #7ce3e1;
+    border-radius: 5px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.01em;
+    border: none;
+    color: $default-black-color;
+  }
+
+  .userDocumentsDataWrapper {
+    padding-top: 9px;
+    margin-left: 15px;
+  }
+
+  .userCompanyDataWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 106px;
+    padding: 0px 16px 5px 10px;
+    background: rgba(217, 217, 217, 0.4);
+    border-radius: 5px;
+    margin-right: 1px;
+  }
+
+  .userCompanyData {
+    display: flex;
+    flex-direction: column;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 10px;
+    padding-top: 5px;
+  }
+  .userCompanyDataCount {
+    margin-top: 0px;
+    padding-left: 0px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+  }
+
+  .userCompanyLimit {
+    margin-left: -10px;
+    display: flex;
+    flex-direction: column;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 10px;
+  }
+
+  .userCompanyLimitCount {
+    margin-top: -0px;
+    padding-left: 0px;
+  }
+
+  // .userCompanyDataLoading {
+  //   display: none;
+  // }
+
+  // // .userCompanyDataLoading {
+  // //   display: flex;
+  // //   flex-direction: column;
+  // //   align-items: center;
+  // //   width: 175px;
+  // //   height: 63px;
+  // //   justify-content: center;
+  // //   background: rgba(217, 217, 217, 0.4);
+  // //   border-radius: 5px;
+  // //   margin-right: 128px;
+  // // }
+
+  // // .userCompanyDataLoader {
+  // //   width: 24px;
+  // //   height: 24px;
+  // //   animation: 1s linear 0s normal none infinite running userCompanyDataLoader;
+  // //   -webkit-animation: 1.5s linear 0s normal none infinite running
+  // //     userCompanyDataLoader;
+  // //   width: 100px;
+  // // }
+  // // @keyframes userCompanyDataLoader {
+  // //   0% {
+  // //     transform: rotate(0deg);
+  // //   }
+  // //   100% {
+  // //     transform: rotate(360deg);
+  // //   }
+  // // }
+  // // @-webkit-keyframes userCompanyDataLoader {
+  // //   0% {
+  // //     transform: rotate(0deg);
+  // //   }
+  // //   100% {
+  // //     transform: rotate(360deg);
+  // //   }
+  // // }
+
+  .userAccountWrapper {
+    display: flex;
+    flex-direction: row;
+    width: 30px;
+    height: 25px;
+    justify-content: flex-end;
+    align-items: center;
+    background-image: url(../src/asets/images/mobile-menu-ikon.svg);
+    background-repeat: no-repeat;
+    margin-left: 23px;
+    margin-top: 25px;
+  }
+
+  .userAccountTextWrapper {
+    display: none;
+  }
+
+  .userName {
+    display: none;
+  }
+
+  .userAccountLogout {
+    display: none;
+  }
+
+  .userAvatar {
+    display: none;
+  }
+
+  .mainWrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 31px 14px 0px 14px;
+  }
+
+  .leftPartRegister {
+    display: flex;
+    flex-direction: column;
+    padding-left: 14px;
+  }
+
+  .primaryTitle {
+    margin-block: 0;
+    margin-inline: 0;
+    display: flex;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 26px;
+    color: $default-black-color;
+  }
+
+  .imgPeopleLogin {
+    margin-top: 599px;
+    width: 335px;
+    height: 356px;
+    padding: 49px 14px 80px 13px;
+  }
+
+  .rightPartRegister {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .imgProtected {
+    z-index: 10;
+    position: absolute;
+    position: absolute;
+    width: 75.22px;
+    height: 92.06px;
+    left: 95px;
+    top: 273px;
+  }
+
+  .loginForm {
+    margin-top: -970px;
+    background: $default-white-color;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    width: fit-content;
+  }
+
+  .loginFormWrapper {
+    padding: 25px 15px 20px 15px;
+    align-items: flex-start;
+  }
+
+  .buttonsBlockWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-bottom: 40px;
+    width: fit-content;
+  }
+
+  .formLightButtonLogin {
+    font-size: 14px;
+    line-height: 17px;
+    width: 103px;
+    margin-right: 20px;
+  }
+
+  .formLightButtonRegist {
+    font-size: 14px;
+    line-height: 17px;
+    width: 182px;
+  }
+
+  .formLable {
+    font-size: 14px;
+    line-height: 17px;
+    width: 227px;
+    .secondsryButton {
+      font-size: 20px;
+      line-height: 24px;
+      width: 305px;
+      height: 59px;
+      margin-bottom: 14px;
+      margin-top: 7px;
+    }
+  }
+
+  .forminput {
+    width: 305px;
+  }
+
+  .secondsryButton {
+    font-size: 20px;
+    line-height: 24px;
+    width: 305px;
+    height: 59px;
+    margin-bottom: 14px;
+    margin-top: 7px;
+  }
+
+  .blueButton {
+    width: 166px;
+    height: 17px;
+    margin-bottom: 30px;
+    margin-left: 70px;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: $default-turquoise-color;
+    padding: 25px 45px 0px 60px;
+  }
+
+  .logoFooter {
+    margin-top: -24px;
+  }
+
+  .infoFooterWrapper {
+    justify-content: end;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: right;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+  }
+
+  .infoFooter {
+    max-width: 200px;
+    padding-bottom: 21px;
+  }
+
+  .footerCopyright {
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.02em;
+  }
+
+  .secondaryTitle {
+    font-size: 28px;
+    line-height: 34px;
+    text-transform: uppercase;
+  }
+
+  .subtitleMain {
+    padding-top: 19px;
+    padding-bottom: 32px;
+  }
+
+  .imgAddData {
+    width: 347px;
+    height: 327px;
+  }
+
+  .mainWrapperColumn {
+    flex-direction: column;
+  }
+
+  .aboutUsTitle {
+    padding-left: 14px;
+    width: 274px;
+    font-family: "Ferry";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: 0.01em;
+  }
+
+  .SliderAboutUs {
+    margin: 32px 0 80px 40px;
+    width: 298px;
+    height: 188px;
+  }
+  .mobileSlideSliderAboutUs {
+    width: 298px;
+    height: 188px;
+  }
+
+  .slick-prev {
+    left: -30px !important;
+  }
+  .slick-prev,
+  .slick-next {
+    top: 40% !important;
+  }
+
+  .NextArrow {
+    margin-left: 5px !important;
+  }
+
+  PrevArrow {
+    margin-left: 20px !important;
+  }
+
+  .WhyWeImg {
+    width: 891px;
+    height: 392.52px;
+    object-fit: scale-down;
+    margin-left: 14px;
+  }
+
+  .mainWrapperPrice {
+    flex-direction: column;
+    padding-top: 107px;
+  }
+
+  .therdTittle {
+    font-size: 32px;
+    line-height: 34px;
+  }
+
+  .ProductCardList {
+    flex-direction: column;
+    margin-top: 37px;
+    padding-bottom: 43px;
+  }
+
+  .cardWrapper {
+    width: 335px;
+    height: 512px;
+    margin-right: 14px;
+    margin-bottom: 43px;
+  }
+
+  .cardWrapperBeginner {
+    border: 2px solid $default-orange-color;
+  }
+
+  .cardTitlewrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .cardTitlewrapperBeginner {
+    background-color: $default-orange-color;
+    border: 2px solid $default-orange-color;
+    border-radius: 8px 8px 0px 0px;
+  }
+
+  .cardTitlewrapperPro {
+    background-color: $default-light-turquoise-color;
+    border-radius: 10px 10px 0px 0px;
+  }
+
+  .cardTitlewrapperBusiness {
+    background-color: $default-black-color;
+    border-radius: 10px 10px 0px 0px;
+  }
+
+  .textCard {
+    padding: 30px 26px 34px 30px;
+  }
+
+  .cardTitle {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .cardSubtitle {
+    font-size: 18px;
+    line-height: 22px;
+    width: 285px;
+  }
+
+  .cardTitleBusiness {
+    color: $default-white-color;
+  }
+
+  .cardSubtitleBusiness {
+    color: $default-white-color;
+  }
+
+  .logoCard {
+    z-index: 10;
+    padding-right: 10px;
+    padding-top: 13px;
+    margin-left: -90px;
+    width: 59px;
+    height: 53.18px;
+  }
+
+  .priceCardWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 38px 36px 24px;
+  }
+
+  .activeTarifeBage {
+    margin-left: 136px;
+    display: none;
+  }
+
+  .priceCardWrapperNobadge {
+    padding-top: 35px;
+  }
+
+  .priceWrapperNoMonth {
+    padding-bottom: 21px;
+  }
+
+  .priceOfMonth {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .includedInTariffWrapper {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .includedInTarifTitle {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .therdButton {
+    margin-top: 20px;
+    margin-left: 24px;
+    width: 286.57px;
+  }
+
+  .imgFined {
+    height: 403px;
+    object-fit: scale-down;
+    margin-left: 36px;
+    padding-bottom: 25px;
+  }
+
+  .SearchNewsByCompany {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .leftPartSearc {
+    display: flex;
+    flex-direction: column;
+    margin-left: -14px;
+  }
+
+  .SearchTextWrapper {
+    padding-right: 0px;
+  }
+
+  .rightPartSearchNewsByCompany {
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .formSearcWrapper {
+    flex-direction: column;
+    width: 361px;
+    height: 688px;
+    margin-left: -14px;
+    margin-bottom: 24px;
+    padding: 24px 0px 37px 14px;
+  }
+
+  .formSearcLeft {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .formSearcRight {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .checkSearcWrapper {
+    display: none;
+  }
+
+  .formLable {
+    padding-bottom: 20px;
+  }
+
+  .forminputSearc {
+    width: 335px;
+    margin-bottom: 30px;
+  }
+
+  .selectTonal {
+    width: 335px;
+  }
+  .DatePickerWrapper {
+    flex-direction: column;
+  }
+
+  .DatePicker {
+    width: 335px;
+    height: 43px;
+    margin: 20px 26px 10px 0px;
+  }
+
+  .buttonSearcWrapper {
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 40px;
+    margin-bottom: 32px;
+  }
+
+  .FothButton {
+    width: 340px;
+  }
+
+  .LoadingDataCompanyWrapperHorizontal {
+    flex-direction: column;
+    margin: 29px 17px 59px 14px;
+  }
+
+  .rightPartDataCompany {
+    padding-left: 0px;
+  }
+
+  .subtitleDataCompany {
+    padding-top: 21px;
+    padding-bottom: 21px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .mobileTitle {
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: 0.01em;
+  }
+
+  .SearchResultDataCompanyImg {
+    width: 350px;
+    height: 233.73px;
+  }
+
+  .SummaryDataCompanyTitleWrapper {
+    margin-left: 14px;
+  }
+
+  .SliderSummaryDataCompany {
+    margin: 34px 0 57px 30px;
+    width: 298px;
+    height: 158px;
+    border: 1px solid #029491;
+    border-radius: 10px 10px 10px 10px;
+    position: relative;
+  }
+
+  .sliderBlock {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: fit-content !important;
+    height: 110px !important;
+    padding: 0px 0px 26px 15px;
+    border-left: none;
+    letter-spacing: 0.01em;
+  }
+
+  .sliderAkcentBlock {
+    width: 139px !important;
+    height: 52px;
+    border-radius: 10px 0px 0px 10px;
+    padding-top: 23px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #ffffff;
+  }
+
+  .periodCell {
+    margin-left: -50px;
+  }
+
+  .countDataCell {
+    margin-left: -70px;
+  }
+
+  .riskDataCell {
+    margin-left: -70px;
+  }
+
+  .ReceivedDataCompanyTitle {
+    margin-left: 14px;
+    width: 272px;
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: 0.01em;
+  }
+
+  .DocumentItemsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 34px;
+    margin-left: 14px;
+  }
+
+  .newsWrapper {
+    margin-right: 26px;
+    margin-bottom: 20px;
+    padding: 19px 14px 18px 24px;
+    width: 295px;
+  }
+
+  .headerNews {
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.01em;
+  }
+
+  .titleNews {
+    font-size: 19px;
+    line-height: 23px;
+    letter-spacing: 0.01em;
+    padding: 21px 0 20px 0;
+  }
+
+  .badgeNews {
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.01em;
+    padding: 4px 12px 4px 12px;
+  }
+
+  .imageNews {
+    margin-top: 13px;
+    border-radius: 10px;
+    width: 297px;
+    height: 158px;
+  }
+
+  .imageNewsImg {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .digestNews {
+    margin-top: 18px;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.01em;
+    margin-bottom: 25px;
+  }
+
+  .buttonAndInfoBlock {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .lightTurquoiseButton {
+    width: 195px;
+    height: 40.7px;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.01em;
+  }
+
+  .counterWords {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .buttonShowMore {
+    margin: 36px 26px 57px 14px;
+    width: 335px;
+    height: 59px;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+  }
+
+  .footer {
+    padding: 25px 19px 0px 18px;
+    .logoFooter {
+      width: 111px;
+      height: 111px;
+      margin-bottom: 24px;
+    }
+  }
 }

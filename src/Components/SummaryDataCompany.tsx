@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 import NextArrow from "../asets/images/arrowNextSlider.svg";
 import PrevArrow from "../asets/images/arrowPrewSlider.svg";
 import verticalGrayLine from "../asets/images/verticalGrayLine.svg";
+import { useStore } from "../Store";
+import moment from "moment";
 
 const SampleNextArrow = (props: any) => {
   const { className, style, onClick } = props;
@@ -35,72 +37,94 @@ const SamplePrevArrow = (props: any) => {
 };
 
 const SummaryDataCompany = () => {
+  const { searchStore } = useStore();
+
   const settings = {
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 9,
     slidesToScroll: 1,
     arrows: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: false,
+          arrows: true,
+          nextArrow: <SampleNextArrow />,
+          prevArrow: <SamplePrevArrow />,
+        },
+      },
+    ],
   };
 
   return (
     <div>
       <div className="SummaryDataCompanyTitleWrapper">
         <h2 className="primaryTitle">Общая сводка</h2>
-        <div className="subtitleLightGray">Найдено 4 221 вариантов</div>
+        <div className="subtitleLightGray">
+          Найдено {searchStore.totalDocumentsCount} вариантов
+        </div>
       </div>
-      <Slider {...settings} className="SliderSummaryDataCompany">
+      <Slider {...settings} className="desktop SliderSummaryDataCompany ">
+        {searchStore.isHistogramsLoading ? (
+          <div className="loader"></div>
+        ) : null}
         <div className="sliderAkcentBlock sliderBlock">
           <div className="period ">Период</div>
-          <div className="countData  ">Всего</div>
+          <div className="countData ">Всего</div>
           <div className="riskData ">Риски</div>
         </div>
+
+        {searchStore.totalDocumentsHistogramData.map((document) => (
+          <div className="sliderBlock">
+            <div className=" periodCell">
+              {moment(document.date).format("DD.MM.YYYY")}
+            </div>
+            <div className=" countDataCell ">{document.value}</div>
+            <div className="riskDataCell">
+              {
+                searchStore.riskFactorsHistogramData.find(
+                  (x) => x.date === document.date
+                ).value
+              }
+            </div>
+          </div>
+        ))}
+      </Slider>
+
+      <Slider {...settings} className="mobile SliderSummaryDataCompany ">
         <div className="sliderBlock">
+          <div className="period sliderAkcentBlock">Период</div>
           <div className=" periodCell">10.09.2021</div>
+        </div>
+
+        <div className="sliderBlock">
+          <div className="countData sliderAkcentBlock ">Всего</div>
           <div className=" countDataCell ">5</div>
+        </div>
+
+        <div className="sliderBlock">
+          <div className="riskData sliderAkcentBlock">Риски</div>
           <div className="riskDataCell">0</div>
         </div>
+
         <div className="sliderBlock">
+          <div className="period sliderAkcentBlock">Период</div>
           <div className=" periodCell">13.09.2021</div>
+        </div>
+
+        <div className="sliderBlock">
+          <div className="countData sliderAkcentBlock ">Всего</div>
           <div className=" countDataCell ">2</div>
-          <div className="riskDataCell">0</div>
         </div>
         <div className="sliderBlock">
-          <div className=" periodCell">17.09.2021</div>
-          <div className=" countDataCell ">6</div>
-          <div className="riskDataCell">0</div>
-        </div>
-        <div className="sliderBlock">
-          <div className=" periodCell">20.09.2021</div>
-          <div className=" countDataCell ">8</div>
-          <div className="riskDataCell">2</div>
-        </div>
-        <div className="sliderBlock">
-          <div className=" periodCell">10.09.2021</div>
-          <div className=" countDataCell ">5</div>
-          <div className="riskDataCell">0</div>
-        </div>
-        <div className="sliderBlock">
-          <div className=" periodCell">10.09.2021</div>
-          <div className=" countDataCell ">5</div>
-          <div className="riskDataCell">0</div>
-        </div>
-        <div className="sliderBlock">
-          <div className=" periodCell">10.09.2021</div>
-          <div className=" countDataCell ">5</div>
-          <div className="riskDataCell">0</div>
-        </div>
-        <div className="sliderBlock">
-          <div className=" periodCell">10.09.2021</div>
-          <div className=" countDataCell ">5</div>
-          <div className="riskDataCell">0</div>
-        </div>
-        <div className="sliderBlock">
-          <div className=" periodCell">test</div>
-          <div className=" countDataCell ">1test</div>
-          <div className="riskDataCell">1test</div>
+          <div className="riskData sliderAkcentBlock">Риски</div>
+          <div className="riskDataCell">7</div>
         </div>
       </Slider>
     </div>
