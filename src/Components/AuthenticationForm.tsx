@@ -10,6 +10,7 @@ import loginWithFacebook from "../asets/images/login-with-facebook.svg";
 import loginWithYandex from "../asets/images/login-with-yandex.svg";
 import imgPeopleLogin from "../asets/images/people-go-to-login.svg";
 import imgProtected from "../asets/images/protected.svg";
+import React from "react";
 
 const apiUrl = "https://gateway.scan-interfax.ru";
 
@@ -17,11 +18,24 @@ const AuthenticationForm = () => {
   const { userStore } = useStore();
   const navigate = useNavigate();
 
+  const passwordRef = React.createRef<HTMLInputElement>();
+
+  const errors = useLocalObservable(() => ({
+    isPasswordHasError: false,
+  }));
+
+  if (userStore.isUserLoggedIn) {
+    navigate("/");
+  }
+
   const loginForm = useLocalObservable(() => ({
     login: "",
     password: "",
     setValue(key: "login" | "password", value: string) {
       loginForm[key] = value.trim();
+      if (errors.isPasswordHasError) {
+        errors.isPasswordHasError = false;
+      }
     },
     get hasError() {
       return !this.login.trim() || !this.password.trim();
@@ -32,7 +46,7 @@ const AuthenticationForm = () => {
     e.preventDefault();
 
     const loginUserInfo = {
-      login: loginForm.login,
+      login: loginForm.login.trim(),
       password: loginForm.password,
     };
 
@@ -48,6 +62,11 @@ const AuthenticationForm = () => {
       })
       .catch((error) => {
         console.log(error);
+        if (error.response.status !== 200) {
+          loginForm.setValue("password", "");
+          passwordRef.current!.value = "";
+          errors.isPasswordHasError = true;
+        }
       });
   });
 
@@ -91,18 +110,23 @@ const AuthenticationForm = () => {
               {" "}
               Пароль:
               <input
-                className="forminput"
+                ref={passwordRef}
+                className={
+                  "forminput " + (errors.isPasswordHasError ? "error" : "")
+                }
                 name="password"
                 id="password"
-                type="text"
+                type="password"
                 onChange={(event) =>
                   loginForm.setValue("password", event.target.value)
                 }
               ></input>
+              {errors.isPasswordHasError ? (
+                <div className="errorWrapper">
+                  <span className="error">Неправильный пароль</span>
+                </div>
+              ) : null}
             </label>
-            {loginForm.hasError ? (
-              <span className="error">Заполните все поля</span>
-            ) : null}
             <button
               className="primaryButton secondsryButton"
               type="submit"

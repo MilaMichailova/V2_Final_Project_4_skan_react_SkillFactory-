@@ -16,8 +16,21 @@ $default-gray-color: #949494;
   font-weight: 900;
 }
 
+.slick-list {
+  .slick-track {
+    margin-left: 0;
+  }
+}
+
+.mobileMenu {
+  display: none;
+}
 .error {
-  color: red;
+  color: #ff5959;
+}
+
+.errorWrapper {
+  text-align: center;
 }
 
 .loader {
@@ -276,7 +289,7 @@ html {
 .mainWrapper {
   display: flex;
   flex-direction: row;
-  padding: 69px 141px 0px 60px;
+  padding: 69px 60px 0px 60px;
 }
 
 .leftPartRegister {
@@ -382,7 +395,12 @@ html {
   width: 379px;
   height: 43px;
   margin-bottom: 20px;
-  padding: 0;
+  padding: 10px;
+  box-sizing: border-box;
+
+  &.error {
+    border: 1px solid #ff5959;
+  }
 }
 
 .secondsryButton {
@@ -574,11 +592,22 @@ PrevArrow {
 .cardWrapper {
   width: 415px;
   height: 540px;
-  margin-right: 37px;
+  margin-right: 20px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   font-family: "Inter";
   font-style: normal;
+  display: flex;
+  flex-direction: column;
+
+  .action {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 }
 
 .cardWrapperBeginner {
@@ -724,8 +753,6 @@ PrevArrow {
 }
 
 .therdButton {
-  margin-top: 36px;
-  margin-left: 30px;
   width: 355px;
   height: 59px;
 }
@@ -1098,6 +1125,7 @@ PrevArrow {
   margin-bottom: 32px;
   max-height: 100%;
   overflow: hidden;
+  width: 100%;
 }
 
 .buttonAndInfoBlock {
@@ -1210,11 +1238,7 @@ PrevArrow {
       display: none;
     }
 
-    width: 30px;
-    height: 25px;
-    justify-content: flex-end;
-    align-items: center;
-    background-image: url(../src/asets/images/mobile-menu-ikon.svg);
+    width: fit-content;
   }
 
   .menuMobileWrapper {
@@ -1355,19 +1379,6 @@ PrevArrow {
   // //     transform: rotate(360deg);
   // //   }
   // // }
-
-  .userAccountWrapper {
-    display: flex;
-    flex-direction: row;
-    width: 30px;
-    height: 25px;
-    justify-content: flex-end;
-    align-items: center;
-    background-image: url(../src/asets/images/mobile-menu-ikon.svg);
-    background-repeat: no-repeat;
-    margin-left: 23px;
-    margin-top: 25px;
-  }
 
   .userAccountTextWrapper {
     display: none;
@@ -1590,11 +1601,19 @@ PrevArrow {
     margin-left: 20px !important;
   }
 
+  .whyWeImgWrapper {
+    position: relative;
+    width: 347px;
+    height: 392px;
+  }
+
   .WhyWeImg {
-    width: 891px;
+    width: 891.41px;
     height: 392.52px;
-    object-fit: scale-down;
-    margin-left: 14px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    clip: rect(0, 347px, 392px, 0);
   }
 
   .mainWrapperPrice {
@@ -1714,8 +1733,6 @@ PrevArrow {
   }
 
   .therdButton {
-    margin-top: 20px;
-    margin-left: 24px;
     width: 286.57px;
   }
 
@@ -1837,9 +1854,10 @@ PrevArrow {
   }
 
   .SliderSummaryDataCompany {
+    box-sizing: border-box;
     margin: 34px 0 57px 30px;
     width: 298px;
-    height: 158px;
+    height: 140px;
     border: 1px solid #029491;
     border-radius: 10px 10px 10px 10px;
     position: relative;
@@ -1927,7 +1945,7 @@ PrevArrow {
   .imageNews {
     margin-top: 13px;
     border-radius: 10px;
-    width: 297px;
+    width: 100%;
     height: 158px;
   }
 
@@ -1978,10 +1996,95 @@ PrevArrow {
 
   .footer {
     padding: 25px 19px 0px 18px;
+
     .logoFooter {
       width: 111px;
       height: 111px;
       margin-bottom: 24px;
     }
+  }
+
+  .mobileMenu {
+    display: flex;
+    box-sizing: border-box;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    outline: inherit;
+    width: 30px;
+    height: 30px;
+    background-image: url(../src/asets/images/mobile-menu-ikon.svg);
+    background-repeat: no-repeat;
+    border-width: 0;
+  }
+
+  .mobile.SliderSummaryDataCompany {
+    .sliderItem {
+      box-sizing: border-box;
+      width: 298px !important;
+      height: 100%;
+      display: flex !important;
+      flex-direction: row;
+      justify-content: space-between;
+      border-radius: 10px;
+
+      .column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        .header {
+          background: #029491;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 24px;
+          color: #ffffff;
+        }
+
+        .value {
+          font-family: "Inter";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 22px;
+          letter-spacing: 0.01em;
+        }
+
+        .value,
+        .header {
+          height: 50%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  .slick-list {
+    width: 100%;
+  }
+
+  .slick-track {
+    height: 100%;
+  }
+
+  .slick-slide {
+    height: 100%;
+
+    & > div {
+      height: 100%;
+    }
+  }
+
+  .slick-next:before {
+    display: none;
+  }
+
+  .slick-prev:before {
+    display: none;
   }
 }

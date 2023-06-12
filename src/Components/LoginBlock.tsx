@@ -12,7 +12,7 @@ const LoginBlock = () => {
       </button>
       <div>
         <img
-          className=" verticalLine"
+          className="verticalLine"
           src={verticalLine}
           alt="vertical line"
         ></img>

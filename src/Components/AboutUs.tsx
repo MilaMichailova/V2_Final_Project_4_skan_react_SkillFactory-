@@ -94,7 +94,9 @@ const AboutUs = () => {
           />
         </div>
       </Slider>
-      <img className="WhyWeImg" src={WhyWe} alt="WhyWe" />
+      <div className="whyWeImgWrapper">
+        <img className="WhyWeImg" src={WhyWe} alt="WhyWe" />
+      </div>
     </div>
   );
 };

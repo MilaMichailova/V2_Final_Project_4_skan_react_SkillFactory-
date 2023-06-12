@@ -34,7 +34,9 @@ const ProRateCard = () => {
             </li>
           </ul>
         </div>
-        <button className="therdButton secondsryButton">Подробнее</button>
+        <div className="action">
+          <button className="therdButton secondsryButton">Подробнее</button>
+        </div>
       </div>
     </div>
   );

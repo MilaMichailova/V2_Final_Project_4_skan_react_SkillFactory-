@@ -51,8 +51,8 @@ const SummaryDataCompany = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: false,
           arrows: true,
           nextArrow: <SampleNextArrow />,
@@ -98,34 +98,30 @@ const SummaryDataCompany = () => {
       </Slider>
 
       <Slider {...settings} className="mobile SliderSummaryDataCompany ">
-        <div className="sliderBlock">
-          <div className="period sliderAkcentBlock">Период</div>
-          <div className=" periodCell">10.09.2021</div>
-        </div>
-
-        <div className="sliderBlock">
-          <div className="countData sliderAkcentBlock ">Всего</div>
-          <div className=" countDataCell ">5</div>
-        </div>
-
-        <div className="sliderBlock">
-          <div className="riskData sliderAkcentBlock">Риски</div>
-          <div className="riskDataCell">0</div>
-        </div>
-
-        <div className="sliderBlock">
-          <div className="period sliderAkcentBlock">Период</div>
-          <div className=" periodCell">13.09.2021</div>
-        </div>
-
-        <div className="sliderBlock">
-          <div className="countData sliderAkcentBlock ">Всего</div>
-          <div className=" countDataCell ">2</div>
-        </div>
-        <div className="sliderBlock">
-          <div className="riskData sliderAkcentBlock">Риски</div>
-          <div className="riskDataCell">7</div>
-        </div>
+        {searchStore.totalDocumentsHistogramData.map((document) => (
+          <div className="sliderItem">
+            <div className="column">
+              <div className="header">Период</div>
+              <div className="value">
+                {moment(document.date).format("DD.MM.YYYY")}
+              </div>
+            </div>
+            <div className="column">
+              <div className="header">Всего</div>
+              <div className="value">{document.value}</div>
+            </div>
+            <div className="column">
+              <div className="header">Риски</div>
+              <div className="value">
+                {
+                  searchStore.riskFactorsHistogramData.find(
+                    (x) => x.date === document.date
+                  ).value
+                }
+              </div>
+            </div>
+          </div>
+        ))}
       </Slider>
     </div>
   );

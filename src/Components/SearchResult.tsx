@@ -4,9 +4,15 @@ import Footer from "./Footer";
 import LoadingDataCompany from "./LoadingDataCompany";
 import ReceivedDataCompany from "./ReceivedDataCompany";
 import { useStore } from "../Store";
+import { useNavigate } from "react-router-dom";
 
 const SearchResult = () => {
-  const { searchStore } = useStore();
+  const navigate = useNavigate();
+  const { userStore } = useStore();
+
+  if (!userStore.isUserLoggedIn) {
+    navigate("/login");
+  }
 
   return (
     <div>

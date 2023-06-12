@@ -8,7 +8,11 @@ import moment from "moment";
 
 const SearchNewsByCompanyForm = () => {
   const navigate = useNavigate();
-  const { searchStore } = useStore();
+  const { searchStore, userStore } = useStore();
+
+  if (!userStore.isUserLoggedIn) {
+    navigate("/login");
+  }
 
   const searchForm: any = useLocalObservable(() => ({
     startDate: new Date(),
@@ -44,7 +48,7 @@ const SearchNewsByCompanyForm = () => {
       return !!this.companyInn && isInnValid(this.companyInn);
     },
     get isValidDocumentsCount() {
-      return !!this.companyInn && isInnValid(this.companyInn);
+      return this.numberOfDocuments > 0;
     },
     get hasError() {
       return (
@@ -217,7 +221,10 @@ const SearchNewsByCompanyForm = () => {
                 ИНН компании*
               </label>
               <input
-                className="forminput forminputSearc"
+                className={
+                  "forminput forminputSearc" +
+                  (searchForm.isInnValid ? "" : " error")
+                }
                 name="inn"
                 id="inn"
                 type="text"
@@ -257,7 +264,10 @@ const SearchNewsByCompanyForm = () => {
                 Количество документов в выдаче*
               </label>
               <input
-                className="forminput forminputSearc"
+                className={
+                  "forminput forminputSearc" +
+                  (searchForm.isValidDocumentsCount ? "" : " error")
+                }
                 name="documentsCount"
                 id="documentsCount"
                 type="number"
@@ -275,13 +285,17 @@ const SearchNewsByCompanyForm = () => {
               <div className="DatePickerWrapper">
                 <DatePicker
                   placeholderText="Дата начала"
-                  className="DatePicker"
+                  className={
+                    "DatePicker" + (searchForm.isDateRangeValid ? "" : " error")
+                  }
                   dateFormat="dd/MM/yyyy"
                   selected={searchForm.startDate}
                   onChange={(date) => searchForm.setDate("startDate", date)}
                 />
                 <DatePicker
-                  className="DatePicker"
+                  className={
+                    "DatePicker" + (searchForm.isDateRangeValid ? "" : " error")
+                  }
                   dateFormat="dd/MM/yyyy"
                   placeholderText="Дата конца"
                   minDate={searchForm.startDate}

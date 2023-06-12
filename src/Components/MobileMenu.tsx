@@ -1,10 +1,12 @@
 import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router-dom";
+import { useStore } from "../Store";
 
 const MobileMenu = () => {
+  const { mobileMenuStore } = useStore();
   const navigate = useNavigate();
 
-  return (
+  return mobileMenuStore.isMenuOpen ? (
     <div className="mobile menuMobileWrapper">
       <div className="ElementmenuMobile ">
         <a href="/" className="menuItemHrefMobile">
@@ -38,7 +40,7 @@ const MobileMenu = () => {
         </button>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default observer(MobileMenu);

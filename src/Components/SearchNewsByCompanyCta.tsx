@@ -17,14 +17,14 @@ const SearchNewsByCompanyCta = () => {
           Комплексный анализ публикаций, получение данных в формате PDF на
           электронную почту.
         </div>
-        <button
-          onClick={() =>
-            userStore.isUserLoggedIn ? navigate("/searc") : navigate("/login")
-          }
-          className=" secondsryButton"
-        >
-          Запросить данные
-        </button>
+        {userStore.isUserLoggedIn ? (
+          <button
+            onClick={() => navigate("/search")}
+            className=" secondsryButton"
+          >
+            Запросить данные
+          </button>
+        ) : null}
       </div>
       <div className="rightPartRegister ">
         <img

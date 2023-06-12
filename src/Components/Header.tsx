@@ -3,6 +3,7 @@ import Navigation from "./Navigation";
 import LoginBlock from "./LoginBlock";
 import UserInformation from "./UserInformation";
 import { useStore } from "../Store";
+import MobileMenu from "./MobileMenu";
 
 const AuthenticationInfo = observer(() => {
   const { userStore } = useStore();
@@ -15,11 +16,19 @@ const AuthenticationInfo = observer(() => {
 });
 
 const Header = () => {
+  const { mobileMenuStore } = useStore();
   return (
-    <header className="headerWrapper">
-      <Navigation></Navigation>
-      <AuthenticationInfo />
-    </header>
+    <div>
+      <header className="headerWrapper">
+        <Navigation></Navigation>
+        <AuthenticationInfo />
+        <button
+          className="mobileMenu"
+          onClick={mobileMenuStore.toggleMenu}
+        ></button>
+      </header>
+      <MobileMenu></MobileMenu>
+    </div>
   );
 };
 
