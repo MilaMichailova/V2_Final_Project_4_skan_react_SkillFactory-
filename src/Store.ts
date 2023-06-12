@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import UserStore from "./User/UserStore";
-import SearchStore from "./Search/SearchStore";
+import SearchStore from "./Search/searchStore";
 import MobileMenuStore from "./MobileMenu/MobileMenuStore";
 
 const userStore = new UserStore();
